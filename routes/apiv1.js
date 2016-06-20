@@ -8,7 +8,18 @@ router.all('/:query/:string', function (req, res, next) {
   var query = req.params.query
   var string = req.params.string
 
-  res.json({test: 2})
+  switch (query) {
+    case "domain":
+      var whois = require('node-whois')
+      whois.lookup(string, function(err, data) {
+        res.json(data)
+      })
+
+      break
+
+  }
+
+  result = {test: "Hello world"}
 
 })
 
