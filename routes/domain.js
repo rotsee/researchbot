@@ -4,14 +4,19 @@ var keys = {
   person: [
     "Registrant Name",
     "Admin Name",
-
+    "holder",
+    "admin-c"
   ],
   organization: [
     "そしきめい",
     "組織名",
     "Organization",
     "Registrant Organization",
-    "Admin Organization"
+    "Admin Organization",
+    "Titular / Registrant"
+  ],
+  dateRegistered: [
+    "created"
   ]
 }
 
@@ -41,6 +46,20 @@ var splitters = [
       }
     })
     return cb(null, output)    
+  },
+  function byBlock(data, cb){
+  //Values in multiple lines, separated by souble newline
+    output = {}
+    var rows = data.split(/\r?\n(\s+)?\r?\n/g)
+    rows.forEach(function(row){
+      var parts = row.split("\r\n")
+      key = parts.shift().trim().replace(":","")
+      for (var i = 0; i < parts.length; i++) {
+        parts[i] = parts[i].trim();
+      }
+      output[key] = parts.join(", ")
+    })
+    return cb(null, output)    
   }
 ]
 
@@ -51,11 +70,12 @@ module.exports = function() {
   api.get = function(string, callback) {
     whois.lookup(string, function(err, data) {
       async.applyEach(splitters, data, function(err, whoisoutputs){
-        whoisdict = {
-          person: [],
-          organization: []
+        whoisdict = {}
+        for (var category in keys){
+          whoisdict[category] = []
         }
         whoisoutputs.forEach(function (whoisoutput){
+          console.log(data)
           for (var category in keys){
             for (var key in whoisoutput){
               if (keys[category].indexOf(key) > -1 ){
