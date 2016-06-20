@@ -10,7 +10,7 @@ module.exports = function() {
       rows.forEach(function(row){
         var parts = row.split(": ")
         if (parts.length == 2){
-          output[parts[0].trim()] = parts[1].trim()
+          output[parts[0].replace(/>/g,"").trim()] = parts[1].replace(/</g,"").trim()
         }
       })
       callback(null, output)
