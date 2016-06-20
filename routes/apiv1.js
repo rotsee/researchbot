@@ -1,5 +1,8 @@
 var express = require('express')
 var router = express.Router()
+var modules = {
+  "domain": "/domain.js"
+}
 
 router.all('/:query/:string', function (req, res, next) {
 
@@ -8,18 +11,17 @@ router.all('/:query/:string', function (req, res, next) {
   var query = req.params.query
   var string = req.params.string
 
-  switch (query) {
-    case "domain":
-      var whois = require('node-whois')
-      whois.lookup(string, function(err, data) {
-        res.json(data)
-      })
-
-      break
-
+  var modulename = null
+  if (query in modules){
+    modulename = modules[query]
   }
 
-  result = {test: "Hello world"}
+  if (modulename){
+    var module = require(__dirname + modulename)()
+    module.get(string, function(err, data){
+      res.json(data)
+    })
+  }
 
 })
 
