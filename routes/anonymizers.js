@@ -7,7 +7,6 @@ module.exports = [
   "Whois Privacy Corp.",
   "Whois Privacy",
   "Domain Privacy Protector Ltd",
-  "​Private Registrant",
-  "A Happy DreamHost Customer"
-
+  "Private Registrant",
+  "A Happy DreamHost Customer",
 ]
