@@ -5,7 +5,7 @@ module.exports = {
     "es": "`.es` domains can only be checked from http://www.nic.es/.",
     "gr": "`.gr` domains can only be checked from https://grweb.ics.forth.gr/public/whois.jsp?lang=en",
     "fr": "`.fr` domains registred by private persons will have some data hidden here. You might be able to get a more detailed answer at http://www.afnic.fr/.",
-    "ar": "`.ar` domains can only be checked at http://www.nic.es. To make the request you must fill the form at https://punto.ar/atencion/contacto/",
+    "ar": "`.ar` domains can only be checked at http://www.nic.er. To make the request enter the domain in Buscar Dominios",
     "au": "`.au` domains can be checked at http://whois.ausregistry.com.au for more information",
     "gh": "`.gh` domains can only be checked at http://www.nic.gh/whois.html",
     "ax": "`.ax` domains can only be checked at http://.whois.ax/index.php?l=en",
