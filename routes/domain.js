@@ -15,7 +15,8 @@ var keys = {
     "personname",
     "First Name",
     "Last Name",
-    "名前"
+    "名前",
+    "등록인",
   ],
   organization: [
     "そしきめい",
@@ -46,7 +47,8 @@ var keys = {
     "Domain Registration Date",
     "Registered Date",
     "Date Created",
-    "Data de registo / Creation Date (dd/mm/yyyy)"
+    "Data de registo / Creation Date (dd/mm/yyyy)",
+    "등록일"
   ],
   contact: [
     "Registrant Phone",
@@ -77,7 +79,8 @@ var keys = {
     "AC Phone Number",
     "電話番号",
     "FAX番号",
-
+    "책임자 전화번호",
+    "책임자 전자우편"
   ]
 }
 
@@ -109,7 +112,13 @@ var splitters = [
     rows.forEach(function(row){
       var parts = row.split(/[\s\t]{2,50}/)
       if (parts.length > 1){
-        output[parts[0].replace(/\w\.\s/, "").replace("]", "").replace("[", "").trim()] = [parts[1].trim()]
+        var key = parts[0].replace(/\w\.\s/, "").replace("]", "").replace("[", "").trim()
+        var value = parts[1].replace(":", "").trim()
+        if (key in output) {
+          output[key].push(value)
+        } else {
+          output[key] = [value]
+        }
       }
     })
     return cb(null, output)    
