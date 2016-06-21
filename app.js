@@ -3,7 +3,8 @@
 var express = require('express')
 var app = express()
 
-app.set('view engine', 'pug')
+app.set('view engine', 'jade')
+app.engine('jade', require('pug').__express)
 app.set('views', __dirname + '/views')
 app.set('baseDir', __dirname)
 
