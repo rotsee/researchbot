@@ -218,7 +218,7 @@ module.exports = function() {
         } else {
           output["message"] += "\n\nThe IP address of the server is " + results[0] + ". You might want to do another whois lookup on that, to see who owns the server (often a web hotel)."
         }
-        callback(null, output)
+        callback(0, output)
       }
     })
   }
