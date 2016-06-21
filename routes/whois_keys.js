@@ -16,10 +16,14 @@ module.exports = {
     "registrant-name",
     "Owner Name",
     "Registrant",
-    "Contact"
+    "Contact",
+    "Contacto Administrativo (Administrative Contact)",
+    "Nombre",
+    "contact"
   ],
   organization: [
     "registrant-organization",
+    "registrar",
     "そしきめい",
     "組織名",
     "Organization",
@@ -35,7 +39,8 @@ module.exports = {
     "org",
     "company",
     "Description",
-    "Owner OrgName"
+    "Owner OrgName",
+    "Organización"
   ],
   dateRegistered: [
     "created",
@@ -53,7 +58,8 @@ module.exports = {
     "Data de registo / Creation Date (dd/mm/yyyy)",
     "등록일",
     "Registration date",
-    "record created"
+    "record created",
+    "Telephone"
   ],
   contact: [
     "Registrant Phone",
