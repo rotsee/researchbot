@@ -25,11 +25,11 @@ app.get('/', function(req, res) {
 app.use(function(req, res, next) {
   res.status(404).send('Sorry, can\'t find that!')
 })
-
+/*
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 })
-
+*/
 
 //Start server
 var server = app.listen(process.env.PORT || 5000, function() {
@@ -37,6 +37,6 @@ var server = app.listen(process.env.PORT || 5000, function() {
   var host = server.address().address
   var port = server.address().port
 
-  console.log('Thenmap API listening at http://%s:%s', host, port)
+  console.log('Website info API listening at http://%s:%s', host, port)
 
 })
