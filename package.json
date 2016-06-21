@@ -1,9 +1,14 @@
 {
   "name": "researchbot",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "4.2.3",
+    "npm": "2.11.3"
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js",
+    "jscs": "jscs app.js"
   },
   "dependencies": {
     "async": "^2.0.0-rc.6",
