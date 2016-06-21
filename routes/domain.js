@@ -87,6 +87,9 @@ module.exports = function() {
   api._whois_lookup = function(callback){
     self = this
     whois.lookup(self.domain, function(err, data) {
+      if (!data){
+        throw ERR_NO_USEFUL_INFORMATION
+      }
       async.applyEach(splitters, data, function(err, whoisoutputs){
         whoisdict = {}
         for (var category in keys){
