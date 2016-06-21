@@ -2,87 +2,8 @@ var whois = require("node-whois")
 var async = require("async")
 var dns = require('dns')
 var messages = require("./topdomain_messages")
+var keys = require("./whois_keys")
 
-var keys = {
-  person: [
-    "Registrant Name",
-    "Admin Name",
-    "holder",
-    "admin-c",
-    "Name",
-    "Registrant Internationalized Name",
-    "person",
-    "personname",
-    "First Name",
-    "Last Name",
-    "名前",
-    "등록인",
-  ],
-  organization: [
-    "そしきめい",
-    "組織名",
-    "Organization",
-    "descr",
-    "Registrant Organization",
-    "Admin Organization",
-    "Titular / Registrant",
-    "Registrant",
-    "Registrant Internationalized Organization",
-    "Admin",
-    "Admin Internationalized Organization",
-    "organization",
-    "org",
-    "company"
-  ],
-  dateRegistered: [
-    "created",
-    "Created",
-    "Creation Date",
-    "Created On",
-    "Registered on",
-    "Registered",
-    "registration",
-    "Registration Time",
-    "登録年月日",
-    "Domain Registration Date",
-    "Registered Date",
-    "Date Created",
-    "Data de registo / Creation Date (dd/mm/yyyy)",
-    "등록일"
-  ],
-  contact: [
-    "Registrant Phone",
-    "Registrant Phone Ext",
-    "Registrant Fax",
-    "Registrant Fac Ext",
-    "Admin Phone",
-    "Admin Phone Ext",
-    "Admin Fax",
-    "Admin Fac Ext",
-    "Phone Number",
-    "Fax Number",
-    "Email Address",
-    "phone",
-    "Phone",
-    "Fax",
-    "Email",
-    "Admin Voice Number",
-    "Admin Fax Number",
-    "Admin Email",
-    "Registrant Voice Number",
-    "Registrant Fax Number",
-    "Registrant Email",
-    "Registrant Contact Email",
-    "e-mail",
-    "Registrant Facsimile Number",
-    "Administrative Contact Facsimile Number",
-    "AC Phone Number",
-    "電話番号",
-    "FAX番号",
-    "책임자 전화번호",
-    "책임자 전자우편"
-  ]
-}
 
 var splitters = [
   function byColon(data, cb){
