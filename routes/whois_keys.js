@@ -19,7 +19,9 @@ module.exports = {
     "Contact",
     "Contacto Administrativo (Administrative Contact)",
     "Nombre",
-    "contact"
+    "contact",
+    "Titular",
+    "Contacto Administrativo",
   ],
   organization: [
     "registrant-organization",
