@@ -5,6 +5,7 @@ var app = express()
 
 app.set('view engine', 'pug')
 app.set('views', __dirname + '/views')
+app.set('baseDir', __dirname)
 
 //app.set('port', (process.env.PORT || 5000))
 
@@ -30,6 +31,7 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 })
 */
+
 
 //Start server
 var server = app.listen(process.env.PORT || 5000, function() {
