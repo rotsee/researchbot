@@ -20,7 +20,12 @@ router.all('/:query/:string', function (req, res, next) {
     var module = require(__dirname + modulename)()
     module.get(string, function(err, data){
       result = {}
-      result["error"] = err
+      // Normalize errors. Falsish values => 0
+      if (err){
+        result["error"] = err
+      } else {
+        result["error"] = 0
+      }
       result[query] = data
       res.json(result)
     })
