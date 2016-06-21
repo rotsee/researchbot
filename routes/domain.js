@@ -141,7 +141,7 @@ module.exports = function() {
   api._dns_lookup = function(callback){
     var self = this
     console.log(self.domain)
-    dns.lookup(self.domain, (err, addresses, family) => {
+    dns.lookup(self.domain, function(err, addresses, family) {
       if (addresses === undefined) {
         callback(ERR_NO_SUCH_DOMAIN, null)
       } else {
