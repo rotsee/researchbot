@@ -4,5 +4,7 @@ module.exports = [
   "Perfect Privacy",
   "WHOISGUARD PROTECTED",
   "WHOISGUARD, INC.",
-  
+  "Whois Privacy Corp.",
+  "Whois Privacy"
+
 ]

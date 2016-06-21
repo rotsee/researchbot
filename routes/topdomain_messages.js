@@ -13,7 +13,8 @@ module.exports = {
     "ba": "`.ba` domains have no whois server but you can check whois at http://www.nic.ba/stream/whois",
     "bb": "`.bb` domains have no whois server but you can check whois at http://whois.telecoms.gov.bb/search_domain.php",
     "bd": "`.bd` domains have no whois server but you can check whois at http://whois.btcl.net.bd",
-    "be": "`.be` domains can only be checked at http://www.dnsbelgium.be/en. Enter the URL you would like to get information about on the search box for _Is your preferred domain name still available?_ You must agree to the terms and conditions of the service."
+    "be": "`.be` domains can only be checked at http://www.dnsbelgium.be/en. Enter the URL you would like to get information about on the search box for _Is your preferred domain name still available?_ You must agree to the terms and conditions of the service to access whois information.",
+    "hu": "There is often more information on `.hu` domains if you use the web form at http://www.domain.hu/domain/English/domainsearch/",
     
     
     "mil": "`.mil` domains have no whois server.",
