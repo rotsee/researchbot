@@ -9,7 +9,7 @@ module.exports = {
     "au": "`.au` domains can be checked at http://whois.ausregistry.com.au for more information",
     "gh": "`.gh` domains can only be checked at http://www.nic.gh/whois.html",
     "ax": "`.ax` domains can only be checked at http://.whois.ax/index.php?l=en",
-    
+    "hu": "There is often more information on `.hu` domains if you use the web form at http://www.domain.hu/domain/English/domainsearch/",    
     "mil": "`.mil` domains have no whois server.",
     "ad": "`.ad` domains have no whois server.",
     "al": "`.al` domains have no whois server.",
