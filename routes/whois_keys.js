@@ -47,7 +47,8 @@ module.exports = {
     "Registered Date",
     "Date Created",
     "Data de registo / Creation Date (dd/mm/yyyy)",
-    "등록일"
+    "등록일",
+    "Registration date"
   ],
   contact: [
     "Registrant Phone",
