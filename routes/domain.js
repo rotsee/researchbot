@@ -1,5 +1,7 @@
 var whois = require("node-whois")
 var async = require("async")
+const dns = require('dns')
+
 var keys = {
   person: [
     "Registrant Name",
@@ -129,17 +131,28 @@ var splitters = [
   }
 ]
 
+const ERR_NO_SUCH_DOMAIN = 1;
+
 module.exports = function() {
 
   var api = {}
+  var domain = null
 
-  api.get = function(string, callback) {
-    var topdomain = string.split(".").pop()
-    var message = ""
-    if (topdomain in messages){
-      message = messages[topdomain]
-    }
-    whois.lookup(string, function(err, data) {
+  api._dns_lookup = function(callback){
+    var self = this
+    console.log(self.domain)
+    dns.lookup(self.domain, (err, addresses, family) => {
+      if (addresses === undefined) {
+        callback(ERR_NO_SUCH_DOMAIN, null)
+      } else {
+        callback(null, addresses)
+      }
+    })
+  }
+
+  api._whois_lookup = function(callback){
+    self = this
+    whois.lookup(self.domain, function(err, data) {
       async.applyEach(splitters, data, function(err, whoisoutputs){
         whoisdict = {}
         for (var category in keys){
@@ -160,12 +173,41 @@ module.exports = function() {
             }
           }
         })
-        callback(null,
-          {data: whoisdict,
-           raw_data: data,
-           message: message}
+        callback(null, {data: whoisdict, raw_data: data}
         )
       })
+    })
+
+  }
+
+  api.get = function(string, callback) {
+    var self = this
+
+    /* Add top domain specific messages */
+    this.domain = string.toString('utf-8').trim().replace(/\w+\:\/\//, "").replace("/", "")
+    var topdomain = this.domain.split(".").pop()
+    var message = ""
+    if (topdomain in messages){
+      message = messages[topdomain]
+    }
+    var output = {data: null,
+                  raw_data: null,
+                  message: message}
+
+    /* Run checks and callback */
+    var fns = [
+      self._dns_lookup.bind(self),
+      self._whois_lookup.bind(self),
+    ]
+    async.series(fns, function(err, results){
+      if (err === ERR_NO_SUCH_DOMAIN){
+        output["message"] = "We could not find that domain, please check your spelling"
+        callback(ERR_NO_SUCH_DOMAIN, output)
+      } else {
+        output["data"] = results[1]["data"]
+        output["raw_data"] = results[1]["raw_data"]
+        callback(null, output)
+      }
     })
   }
 
