@@ -1,10 +1,12 @@
-var express = require('express');
-var app = express();
+'use strict'
+
+var express = require('express')
+var app = express()
 
 app.set('view engine', 'jade')
 app.set('views', __dirname + '/views')
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 5000))
 
 // CORS
 app.use(function(req, res, next) {
