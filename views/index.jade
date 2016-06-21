@@ -18,13 +18,25 @@ block content
     }
   p Example for <code>/v1/domain/google.in</code>:
   pre.
-    {"error":0,"domain":{"data":{"person":["Christina Chiou"],"organization":["Google Inc."],"dateRegistered":["14-Feb-2005 20"],"contact":["+1.6502530000","dns-admin@google.com"]},"raw_data":"Access to .IN WHOIS information is provided to assist persons in determining the contents of a domain name registration record in the .IN registry database. The data in this record is provided by .IN Registry for informational purposes only, and .IN does not guarantee its accuracy.  This service is intended only for query-based access. You agree that you will use this data only for lawful purposes and that, under no circumstances will you use this data to(a) allow, enable, or otherwise support the transmission by e-mail, telephone, or facsimile of mass unsolicited, commercial advertising or solicitations to entities other than the data recipient's own existing customers; or (b) enable high volume, automated, electronic processes that send queries or data to the systems of Registry Operator, a Registrar, or Afilias except as reasonably necessary to register domain names or modify existing registrations. All rights reserved. .IN reserves the right to modify these terms at any time. By submitting this query, you agree to abide by this policy.\n\nDomain ID:D21089-AFIN\r\nDomain Name:GOOGLE.IN\r\nCreated On:14-Feb-2005 20:35:14 UTC\r\nLast Updated On:13-Jan-2016 10:22:51 UTC\r\nExpiration Date:14-Feb-2017 20:35:14 UTC\r\nSponsoring Registrar:MarkMonitor Inc. (R84-AFIN)\r\nStatus:CLIENT DELETE PROHIBITED\r\nReason:\r\nStatus:CLIENT TRANSFER PROHIBITED\r\nReason:\r\nStatus:CLIENT UPDATE PROHIBITED\r\nReason:\r\nRegistrant ID:mmr-108695\r\nRegistrant Name:Christina Chiou\r\nRegistrant Organization:Google Inc.\r\nRegistrant Street1:1600 Amphitheatre Parkway\r\nRegistrant Street2:\r\nRegistrant Street3:\r\nRegistrant City:Mountain View\r\nRegistrant State/Province:CA\r\nRegistrant Postal Code:94043\r\nRegistrant Country:US\r\nRegistrant Phone:+1.6502530000\r\nRegistrant Phone Ext.:\r\nRegistrant FAX:+1.6502530001\r\nRegistrant FAX Ext.:\r\nRegistrant Email:dns-admin@google.com\r\nAdmin ID:mmr-108695\r\nAdmin Name:Christina Chiou\r\nAdmin Organization:Google Inc.\r\nAdmin Street1:1600 Amphitheatre Parkway\r\nAdmin Street2:\r\nAdmin Street3:\r\nAdmin City:Mountain View\r\nAdmin State/Province:CA\r\nAdmin Postal Code:94043\r\nAdmin Country:US\r\nAdmin Phone:+1.6502530000\r\nAdmin Phone Ext.:\r\nAdmin FAX:+1.6502530001\r\nAdmin FAX Ext.:\r\nAdmin Email:dns-admin@google.com\r\nTech ID:mmr-108695\r\nTech Name:Christina Chiou\r\nTech Organization:Google Inc.\r\nTech Street1:1600 Amphitheatre Parkway\r\nTech Street2:\r\nTech Street3:\r\nTech City:Mountain View\r\nTech State/Province:CA\r\nTech Postal Code:94043\r\nTech Country:US\r\nTech Phone:+1.6502530000\r\nTech Phone Ext.:\r\nTech FAX:+1.6502530001\r\nTech FAX Ext.:\r\nTech Email:dns-admin@google.com\r\nName Server:NS1.GOOGLE.COM\r\nName Server:NS2.GOOGLE.COM\r\nName Server:NS3.GOOGLE.COM\r\nName Server:NS4.GOOGLE.COM\r\nName Server: \r\nName Server: \r\nName Server: \r\nName Server: \r\nName Server: \r\nName Server: \r\nName Server: \r\nName Server: \r\nName Server: \r\nDNSSEC:Unsigned\r\n\r\n\n","message":"\n\nThe IP address of the server is 216.58.210.100. You might want to do another whois lookup on that, to see who owns the server (often a web hotel).","ip":"216.58.210.100"}}
+    {
+      "error": 0,
+      "domain": {
+        "data": {
+          "person": ["Christina Chiou"],
+          "organization": ["Google Inc."],
+          "dateRegistered": ["14-Feb-2005 20"],
+          "contact":["+1.6502530000", "dns-admin@google.com"]
+        },
+      "raw_data": *SNIP*,
+      "message": "The IP address of the server is 216.58.210.100. You might want to do another whois lookup on that, to see who owns the server (often a web hotel).",
+      "ip": "216.58.210.100"}
+    }
 
   h3 Error codes
   ul
-    li `0`: No error
-    li `1`: No such domain found
-    li `2`: No useful whois data found
+    li <code>0</code>: No error
+    li <code>1</code>: No such domain found
+    li <code>2</code>: No useful whois data found
 
   h2 Known limitations
   ul
