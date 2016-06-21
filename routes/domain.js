@@ -1,88 +1,11 @@
 var whois = require("node-whois")
 var async = require("async")
 var dns = require('dns')
+const punycode = require('punycode')
 var messages = require("./topdomain_messages")
+var keys = require("./whois_keys")
+var anonymizers = require("./anonymizers")
 
-var keys = {
-  person: [
-    "Registrant Name",
-    "Admin Name",
-    "holder",
-    "admin-c",
-    "Name",
-    "Registrant Internationalized Name",
-    "person",
-    "personname",
-    "First Name",
-    "Last Name",
-    "名前",
-    "등록인",
-  ],
-  organization: [
-    "そしきめい",
-    "組織名",
-    "Organization",
-    "descr",
-    "Registrant Organization",
-    "Admin Organization",
-    "Titular / Registrant",
-    "Registrant",
-    "Registrant Internationalized Organization",
-    "Admin",
-    "Admin Internationalized Organization",
-    "organization",
-    "org",
-    "company"
-  ],
-  dateRegistered: [
-    "created",
-    "Created",
-    "Creation Date",
-    "Created On",
-    "Registered on",
-    "Registered",
-    "registration",
-    "Registration Time",
-    "登録年月日",
-    "Domain Registration Date",
-    "Registered Date",
-    "Date Created",
-    "Data de registo / Creation Date (dd/mm/yyyy)",
-    "등록일"
-  ],
-  contact: [
-    "Registrant Phone",
-    "Registrant Phone Ext",
-    "Registrant Fax",
-    "Registrant Fac Ext",
-    "Admin Phone",
-    "Admin Phone Ext",
-    "Admin Fax",
-    "Admin Fac Ext",
-    "Phone Number",
-    "Fax Number",
-    "Email Address",
-    "phone",
-    "Phone",
-    "Fax",
-    "Email",
-    "Admin Voice Number",
-    "Admin Fax Number",
-    "Admin Email",
-    "Registrant Voice Number",
-    "Registrant Fax Number",
-    "Registrant Email",
-    "Registrant Contact Email",
-    "e-mail",
-    "Registrant Facsimile Number",
-    "Administrative Contact Facsimile Number",
-    "AC Phone Number",
-    "電話番号",
-    "FAX番号",
-    "책임자 전화번호",
-    "책임자 전자우편"
-  ]
-}
 
 var splitters = [
   function byColon(data, cb){
@@ -142,6 +65,7 @@ var splitters = [
 ]
 
 const ERR_NO_SUCH_DOMAIN = 1;
+const ERR_NO_USEFUL_INFORMATION = 2;
 
 module.exports = function() {
 
@@ -194,6 +118,7 @@ module.exports = function() {
 
     /* Add top domain specific messages */
     this.domain = string.toString('utf-8').trim().replace(/\w+\:\/\//, "").replace("/", "")
+    this.domain = punycode.toASCII(this.domain)
     var topdomain = this.domain.split(".").pop()
     var message = ""
     if (topdomain in messages){
@@ -217,12 +142,23 @@ module.exports = function() {
         output["raw_data"] = results[1]["raw_data"]
         output["ip"] = results[0]
         // Is this an IP4 address?
-        if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(self.domain)){
-
+        if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(self.domain)) {
         } else {
           output["message"] += "\n\nThe IP address of the server is " + results[0] + ". You might want to do another whois lookup on that, to see who owns the server (often a web hotel)."
         }
-        callback(0, output)
+        // Does it use an anonymizer
+        uses_anonymizer = false
+        anonymizers.forEach(function(anonymizer){
+          if ((results[1]["data"]["person"].indexOf(anonymizer) > -1) || (results[1]["data"]["person"].indexOf(anonymizer) > -1)) {
+              uses_anonymizer = true
+          }
+        })
+        if (uses_anonymizer){
+          output["message"] = "This domain is registered using a anonymizing service. This is allowed in some places, and there is not much else we can do. Try looking for clues on the website."
+          callback(ERR_NO_USEFUL_INFORMATION, output)
+        } else {
+          callback(0, output)          
+        }
       }
     })
   }
