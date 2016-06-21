@@ -76,7 +76,13 @@ module.exports = function() {
     var self = this
     dns.lookup(self.domain, function(err, addresses, family) {
       if (addresses === undefined) {
-        callback(ERR_NO_SUCH_DOMAIN, null)
+          dns.lookup("www."+self.domain, function(err, addresses, family) {
+            if (addresses === undefined) {
+              callback(ERR_NO_SUCH_DOMAIN, null)
+            } else {
+              callback(null, addresses)
+            }
+          })
       } else {
         callback(null, addresses)
       }
