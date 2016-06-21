@@ -80,11 +80,11 @@ var keys = {
   ]
 }
 var messages = {
-  "`se`": ".se domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
-  "`nu`": ".nu domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
-  "`eu`": ".eu domains can only be checked from http://www.eurid.eu/. For private registrants, you need to fill out a written form, and submit.",
-  "`es`": ".es domains can only be checked from http://www.nic.es/.",
-  "`gr`": ".gr domains can only be checked from https://grweb.ics.forth.gr/public/whois.jsp?lang=en"
+  "se": "`.se` domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
+  "nu": "`.nu` domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
+  "eu": "`.eu` domains can only be checked from http://www.eurid.eu/. For private registrants, you need to fill out a written form, and submit.",
+  "es": "`.es` domains can only be checked from http://www.nic.es/.",
+  "gr": "`.gr` domains can only be checked from https://grweb.ics.forth.gr/public/whois.jsp?lang=en"
 }
 
 var splitters = [
@@ -147,7 +147,6 @@ module.exports = function() {
 
   api._dns_lookup = function(callback){
     var self = this
-    console.log(self.domain)
     dns.lookup(self.domain, function(err, addresses, family) {
       if (addresses === undefined) {
         callback(ERR_NO_SUCH_DOMAIN, null)
@@ -214,6 +213,11 @@ module.exports = function() {
         output["data"] = results[1]["data"]
         output["raw_data"] = results[1]["raw_data"]
         output["ip"] = results[0]
+        if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(self.domain)){
+
+        } else {
+          output["message"] += "\n\nThe IP address of the server is " + results[0] + ". You might want to do another whois lookup on that, to see who owns the server (often a web hotel)."
+        }
         callback(null, output)
       }
     })
