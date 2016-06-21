@@ -13,8 +13,10 @@ module.exports = {
     "名前",
     "등록인",
     "Admin Contact",
+    "registrant-name"
   ],
   organization: [
+    "registrant-organization",
     "そしきめい",
     "組織名",
     "Organization",
@@ -77,6 +79,9 @@ module.exports = {
     "電話番号",
     "FAX番号",
     "책임자 전화번호",
-    "책임자 전자우편"
+    "책임자 전자우편",
+    "registrant-email",
+    "registrant-phone",
+    "registrant-fax"
   ]
 }

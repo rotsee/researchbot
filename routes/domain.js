@@ -1,6 +1,7 @@
 var whois = require("node-whois")
 var async = require("async")
 var dns = require('dns')
+const punycode = require('punycode')
 var messages = require("./topdomain_messages")
 var keys = require("./whois_keys")
 var anonymizers = require("./anonymizers")
@@ -117,6 +118,7 @@ module.exports = function() {
 
     /* Add top domain specific messages */
     this.domain = string.toString('utf-8').trim().replace(/\w+\:\/\//, "").replace("/", "")
+    this.domain = punycode.toASCII(this.domain)
     var topdomain = this.domain.split(".").pop()
     var message = ""
     if (topdomain in messages){
