@@ -14,7 +14,7 @@ module.exports = {
     "ad": "`.ad` domains have no whois server.",
     "al": "`.al` domains have no whois server.",
     "ao": "`.ao` domains have no whois server.",    
-    "aq": "`.aq` domains have no whois server."
-    "az": "`.az` domains have no whois server."
+    "aq": "`.aq` domains have no whois server.",
+    "az": "`.az` domains have no whois server.",
     
 }
