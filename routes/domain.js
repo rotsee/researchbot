@@ -73,6 +73,7 @@ module.exports = function() {
   var domain = null
 
   api._dns_lookup = function(callback){
+    /* Ugly hack: Check if domain exists, or if www.+domain exists */
     var self = this
     dns.lookup(self.domain, function(err, addresses, family) {
       if (addresses === undefined) {
