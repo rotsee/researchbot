@@ -3,7 +3,7 @@
 var express = require('express')
 var app = express()
 
-app.set('view engine', 'jade')
+app.set('view engine', 'pug')
 app.set('views', __dirname + '/views')
 
 //app.set('port', (process.env.PORT || 5000))
