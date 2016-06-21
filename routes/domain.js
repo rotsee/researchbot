@@ -54,7 +54,6 @@ var splitters = [
       if (row){
         var parts = row.split(/\r?\n/g)
         var key = parts.shift().trim().replace(":","").replace(/\*/g,"").trim()
-        console.log(key)
         for (var i = 0; i < parts.length; i++) {
           parts[i] = parts[i].trim();
         }
