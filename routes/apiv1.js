@@ -19,7 +19,10 @@ router.all('/:query/:string', function (req, res, next) {
   if (modulename){
     var module = require(__dirname + modulename)()
     module.get(string, function(err, data){
-      res.json(data)
+      result = {}
+      result["error"] = err
+      result[query] = data
+      res.json(result)
     })
   }
 
