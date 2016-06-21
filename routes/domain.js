@@ -3,6 +3,7 @@ var async = require("async")
 var dns = require('dns')
 var messages = require("./topdomain_messages")
 var keys = require("./whois_keys")
+var anonymizers = require("./anonymizers")
 
 
 var splitters = [
@@ -63,6 +64,7 @@ var splitters = [
 ]
 
 const ERR_NO_SUCH_DOMAIN = 1;
+const ERR_NO_USEFUL_INFORMATION = 2;
 
 module.exports = function() {
 
@@ -138,12 +140,23 @@ module.exports = function() {
         output["raw_data"] = results[1]["raw_data"]
         output["ip"] = results[0]
         // Is this an IP4 address?
-        if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(self.domain)){
-
+        if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(self.domain)) {
         } else {
           output["message"] += "\n\nThe IP address of the server is " + results[0] + ". You might want to do another whois lookup on that, to see who owns the server (often a web hotel)."
         }
-        callback(0, output)
+        // Does it use an anonymizer
+        uses_anonymizer = false
+        anonymizers.forEach(function(anonymizer){
+          if ((results[1]["data"]["person"].indexOf(anonymizer) > -1) || (results[1]["data"]["person"].indexOf(anonymizer) > -1)) {
+              uses_anonymizer = true
+          }
+        })
+        if (uses_anonymizer){
+          output["message"] = "This domain is registered using a anonymizing service. This is allowed in some places, and there is not much else we can do. Try looking for clues on the website."
+          callback(ERR_NO_USEFUL_INFORMATION, output)
+        } else {
+          callback(0, output)          
+        }
       }
     })
   }
