@@ -10,10 +10,11 @@ module.exports = {
     "gh": "`.gh` domains can only be checked at http://www.nic.gh/whois.html",
     "ax": "`.ax` domains can only be checked at http://.whois.ax/index.php?l=en",
     
-    "mil": "`.mil` domains have no whois server. You can check whois information at  https://www.iana.org/whois?q=MIL",
-    "ad": "`.ad` domains have no whois server. You can check whois information at  https://www.iana.org/whois?q=ad",
-    "al": "`.al` domains have no whois server. You can check whois information at  https://www.iana.org/whois?q=al",
-    "ao": "`.ao` domains have no whois server. You can check whois information at  https://www.iana.org/whois?q=ao",    
-    "aq": "`.aq` domains have no whois server. You can check whois information at  https://www.iana.org/whois?q=aq"
+    "mil": "`.mil` domains have no whois server.",
+    "ad": "`.ad` domains have no whois server.",
+    "al": "`.al` domains have no whois server.",
+    "ao": "`.ao` domains have no whois server.",    
+    "aq": "`.aq` domains have no whois server."
+    "az": "`.az` domains have no whois server."
     
 }
