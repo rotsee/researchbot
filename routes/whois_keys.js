@@ -62,7 +62,7 @@ module.exports = {
     "Registration date",
     "record created",
     "Telephone",
-    "Domain record activated"
+    "Domain record activated",
   ],
   contact: [
     "Registrant Phone",
