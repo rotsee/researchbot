@@ -5,6 +5,9 @@ module.exports = [
   "WHOISGUARD PROTECTED",
   "WHOISGUARD, INC.",
   "Whois Privacy Corp.",
-  "Whois Privacy"
+  "Whois Privacy",
+  "Domain Privacy Protector Ltd",
+  "​Private Registrant",
+  "A Happy DreamHost Customer"
 
 ]
