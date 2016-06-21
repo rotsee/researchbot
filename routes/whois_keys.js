@@ -13,7 +13,8 @@ module.exports = {
     "名前",
     "등록인",
     "Admin Contact",
-    "registrant-name"
+    "registrant-name",
+    "Owner Name"
   ],
   organization: [
     "registrant-organization",
@@ -31,7 +32,8 @@ module.exports = {
     "organization",
     "org",
     "company",
-    "Description"
+    "Description",
+    "Owner OrgName"
   ],
   dateRegistered: [
     "created",
