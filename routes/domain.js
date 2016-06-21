@@ -13,7 +13,8 @@ var keys = {
     "person",
     "personname",
     "First Name",
-    "Last Name"
+    "Last Name",
+    "名前"
   ],
   organization: [
     "そしきめい",
@@ -72,12 +73,17 @@ var keys = {
     "e-mail",
     "Registrant Facsimile Number",
     "Administrative Contact Facsimile Number",
-    "AC Phone Number"
+    "AC Phone Number",
+    "電話番号",
+    "FAX番号",
+
   ]
 }
 var messages = {
-  "se": ".se domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
-  "nu": ".nu domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant."
+  "`se`": ".se domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
+  "`nu`": ".nu domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
+  "`eu`": ".eu domains can only be checked from http://www.eurid.eu/. For private registrants, you need to fill out a written form, and submit.",
+  "`es`": ".es domains can only be checked from http://www.nic.es/."
 }
 
 var splitters = [
@@ -201,11 +207,12 @@ module.exports = function() {
     ]
     async.series(fns, function(err, results){
       if (err === ERR_NO_SUCH_DOMAIN){
-        output["message"] = "We could not find that domain, please check your spelling"
+        output["message"] = "We could not find that domain, please check your spelling."
         callback(ERR_NO_SUCH_DOMAIN, output)
       } else {
         output["data"] = results[1]["data"]
         output["raw_data"] = results[1]["raw_data"]
+        output["ip"] = results[0]
         callback(null, output)
       }
     })
