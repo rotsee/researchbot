@@ -35,7 +35,7 @@ var splitters = [
     rows.forEach(function(row){
       var parts = row.split(/[\s\t]{2,50}/)
       if (parts.length > 1){
-        var key = parts[0].replace(/\w\.\s/, "").replace(/\*/g,"").replace("]", "").replace("[", "").trim()
+        var key = parts[0].replace(/^\w\.\s/, "").replace(/\*/g,"").replace("]", "").replace("[", "").trim()
         var value = parts[1].replace(":", "").trim()
         if (key in output) {
           output[key].push(value)
@@ -77,13 +77,13 @@ module.exports = function() {
     var self = this
     dns.lookup(self.domain, function(err, addresses, family) {
       if (addresses === undefined) {
-          dns.lookup("www."+self.domain, function(err, addresses, family) {
-            if (addresses === undefined) {
-              callback(ERR_NO_SUCH_DOMAIN, null)
-            } else {
-              callback(null, addresses)
-            }
-          })
+        dns.lookup("www."+self.domain, function(err, addresses, family) {
+          if (addresses === undefined) {
+            callback(ERR_NO_SUCH_DOMAIN, null)
+          } else {
+            callback(null, addresses)
+          }
+        })
       } else {
         callback(null, addresses)
       }
@@ -159,7 +159,7 @@ module.exports = function() {
         // Does it use an anonymizer
         uses_anonymizer = false
         anonymizers.forEach(function(anonymizer){
-          if ((results[1]["data"]["person"].indexOf(anonymizer) > -1) || (results[1]["data"]["person"].indexOf(anonymizer) > -1)) {
+          if ((results[1]["data"]["person"].indexOf(anonymizer) > -1) || (results[1]["data"]["organization"].indexOf(anonymizer) > -1)) {
               uses_anonymizer = true
           }
         })
