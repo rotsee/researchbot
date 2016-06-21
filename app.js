@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'jade')
+app.set('views', __dirname + '/views')
+
 app.set('port', (process.env.PORT || 5000));
 
 // CORS
@@ -13,6 +16,9 @@ app.use(function(req, res, next) {
 var apiv1 = require(__dirname + '/routes/apiv1.js')
 app.use('/v1', apiv1)
 
+app.get('/', function(req, res) {
+  res.render('index')
+})
 // Errors
 app.use(function(req, res, next) {
   res.status(404).send('Sorry, can\'t find that!')
