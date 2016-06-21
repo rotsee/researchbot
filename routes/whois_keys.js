@@ -61,7 +61,8 @@ module.exports = {
     "등록일",
     "Registration date",
     "record created",
-    "Telephone"
+    "Telephone",
+    "Domain record activated"
   ],
   contact: [
     "Registrant Phone",
