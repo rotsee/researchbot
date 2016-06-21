@@ -74,8 +74,8 @@ var keys = {
   ]
 }
 var messages = {
-  "se": ".se domains can only be checked from http://iis.se. If the domain is registered by a private person, you can call Stiftelsen för internetinfrastruktur, and ask for the name. You wil have to make sure to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they will probably require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the name of the person.",
-  "nu": ".nu domains can only be checked from http://iis.se. If the domain is registered by a private person, you can call Stiftelsen för internetinfrastruktur, and ask for the name. You wil have to make sure to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they will probably require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the name of the person.",
+  "se": ".se domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
+  "nu": ".nu domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant."
 }
 
 var splitters = [
