@@ -9,4 +9,5 @@ module.exports = [
   "Domain Privacy Protector Ltd",
   "Private Registrant",
   "A Happy DreamHost Customer",
+  "Tigher chap private limited",
 ]
