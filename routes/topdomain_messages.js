@@ -1,3 +1,7 @@
+var sprintf = require("sprintf-js").sprintf
+
+const NO_WHOIS = "`%s` domains have no whois server."
+const WEB_INTERFACE_ONLY = "`%s` has to be checked through the web interface at %s"
 module.exports = {
     "se": "`.se` domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
     "nu": "`.nu` domains can only be checked from http://iis.se. If the domain is registered by a private person, call “Stiftelsen för internetinfrastruktur”, and ask for the name. You will have to make sure you get to speak to the right person, though. The people picking the phone normally don't have a clue. Ask for “Dot se registry”. As of 2016, they might require you to fill out a form, and sent in. Scanning and sending via email should do. You can expect to get at least the first and last name of the registrant.",
@@ -15,12 +19,10 @@ module.exports = {
     "bd": "`.bd` domains have no whois server but you can check whois at http://whois.btcl.net.bd",
     "be": "`.be` domains can only be checked at http://www.dnsbelgium.be/en. Enter the URL you would like to get information about on the search box for _Is your preferred domain name still available?_ You must agree to the terms and conditions of the service to access whois information.",
     "hu": "There is often more information on `.hu` domains if you use the web form at http://www.domain.hu/domain/English/domainsearch/",
-    
-    
     "mil": "`.mil` domains have no whois server.",
-    "ad": "`.ad` domains have no whois server.",
-    "al": "`.al` domains have no whois server.",
-    "ao": "`.ao` domains have no whois server.",    
-    "aq": "`.aq` domains have no whois server.",
+    "ad": sprintf(NO_WHOIS, "ad"),
+    "al": sprintf(NO_WHOIS, "al"),
+    "ao": sprintf(NO_WHOIS, "ao"),
+    "aq": sprintf(NO_WHOIS, "aq"),
     
 }
