@@ -15,4 +15,6 @@ module.exports = [
   "Whois Privacy Corp.",
   "Whois Privacy",
   "YoHOST.ORG Privacy Protection",
+  "www.PRIVACY.cc",
+  "Privacy.CC",
 ]
