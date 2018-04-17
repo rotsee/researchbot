@@ -8,6 +8,7 @@ module.exports = [
   "PERFECT PRIVACY",
   "PERFECT PRIVACY, LLC",
   "Private Registrant",
+  "Private Registration",
   "Private Whois",
   "Tigher chap private limited",
   "WHOISGUARD PROTECTED",
