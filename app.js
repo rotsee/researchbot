@@ -1,7 +1,7 @@
 'use strict'
 
-var express = require('express')
-var app = express()
+const express = require('express')
+const app = express()
 
 app.set('view engine', 'jade')
 app.engine('jade', require('pug').__express)
@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
   next()
 })
 
-var apiv1 = require(__dirname + '/routes/apiv1.js')
+const apiv1 = require(__dirname + '/routes/apiv1.js')
 app.use('/v1', apiv1)
 
 app.get('/', function(req, res) {
@@ -35,7 +35,7 @@ app.listen(app.get('port'), function() {
 
 
 //Start server
-var server = app.listen(process.env.PORT || 5000, function() {
+const server = app.listen(process.env.PORT || 5000, function() {
 
   var host = server.address().address
   var port = server.address().port

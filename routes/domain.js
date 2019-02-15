@@ -1,10 +1,10 @@
-var whois = require("node-whois")
-var async = require("async")
-var dns = require('dns')
+const whois = require("node-whois")
+const async = require("async")
+const dns = require('dns')
 const punycode = require('punycode')
-var messages = require("./topdomain_messages")
-var keys = require("./whois_keys")
-var anonymizers = require("./anonymizers")
+const messages = require("./topdomain_messages")
+const keys = require("./whois_keys")
+const anonymizers = require("./anonymizers")
 
 
 var splitters = [
@@ -44,7 +44,7 @@ var splitters = [
         }
       }
     })
-    return cb(null, output)    
+    return cb(null, output)
   },
   function byBlock(data, cb){
   //Values in multiple lines, separated by double newline
@@ -60,7 +60,7 @@ var splitters = [
         output[key] = [parts.shift()]
       }
     })
-    return cb(null, output)    
+    return cb(null, output)
   }
 ]
 
@@ -167,7 +167,7 @@ module.exports = function() {
           output["message"] = "This domain is registered using a anonymizing service. This is allowed in some places, and there is not much else we can do. Try looking for clues on the website."
           callback(ERR_NO_USEFUL_INFORMATION, output)
         } else {
-          callback(0, output)          
+          callback(0, output)
         }
       }
     })

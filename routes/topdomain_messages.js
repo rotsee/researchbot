@@ -1,4 +1,4 @@
-var sprintf = require("sprintf-js").sprintf
+const sprintf = require("sprintf-js").sprintf
 
 const NO_WHOIS = "`%s` domains have no whois server."
 const WEB_INTERFACE_ONLY = "`%s` has to be checked through the web interface at %s"
@@ -24,5 +24,5 @@ module.exports = {
     "al": sprintf(NO_WHOIS, "al"),
     "ao": sprintf(NO_WHOIS, "ao"),
     "aq": sprintf(NO_WHOIS, "aq"),
-    
+
 }
