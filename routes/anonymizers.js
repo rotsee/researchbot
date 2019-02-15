@@ -1,5 +1,6 @@
 module.exports = [
   "A Happy DreamHost Customer",
+  "Contact Privacy Inc.",
   "Domain Privacy Protector Ltd",
   "Domains By Proxy, LLC",
   "Knock Knock WHOIS Not There",
